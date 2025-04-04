@@ -1,15 +1,26 @@
 
-<h1>
-<p align="center">
-    <img src="assets/emu.png" alt="BioEmu logo" width="300"/>
-</p>
-</h1>
-
-[![DOI:10.1101/2024.12.05.626885](https://zenodo.org/badge/DOI/10.1101/2024.12.05.626885.svg)](https://doi.org/10.1101/2024.12.05.626885)
-[![Requires Python 3.10+](https://img.shields.io/badge/Python-3.10+-blue.svg?logo=python&logoColor=white)](https://python.org/downloads)
-
-
 # Biomolecular Emulator (BioEmu)
+
+## Installation
+```bash
+conda create -n bioemu_2 python==3.11
+pip install bioemu
+```
+
+## Download model
+```bash
+connect to a proxy, download checkpoint from huggingface
+```
+
+## Run
+```bash
+# in the network node
+python -m bioemu.sample --ckpt_path models/checkpoint.ckpt --model_config_path models/config.yaml \
+ --sequence examples/1ake.a3m --num_samples 100 --output_dir 1ake_outputs
+# in the compute node
+python -m bioemu.sample --ckpt_path models/checkpoint.ckpt --model_config_path models/config.yaml \
+ --sequence examples/1ake.a3m --num_samples 100 --output_dir 1ake_outputs
+```
 
 Biomolecular Emulator (BioEmu for short) is a model that samples from the approximated equilibrium distribution of structures for a protein monomer, given its amino acid sequence.
 
